@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>Index</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            <input type="text" v-model="mentor">
+        </p>
+        <p>
+            <button v-on:click="addMentor">Add Mentor</button>
+            <ol>
+                <li v-for="mentor1 in mentors">{{mentor1}}</li>
+            </ol>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                mentor: "",
+                mentors: [
+                ]
+            },
+
+            methods: {
+                addMentor: function () {
+                    if (this.mentor != "") {
+                        this.mentors.push({
+                            content: this.mentor,
+                            status: false
+                        })
+                        this.mentor = ""
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
