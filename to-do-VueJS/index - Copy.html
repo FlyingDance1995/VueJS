@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>Index</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" type="text/css" href="app.css">
+</head>
+
+<body>
+    <div id="app">
+        {{number}}
+        {{text}}
+        <my-component @send="sendText"></my-component>
+    </div>
+    <script>
+        Vue.component('my-component', {
+            template: '<button @click="clicked">Click me</button>',
+            methods: {
+                clicked() {
+                    this.$emit('send', '100','bye')
+                }
+            }
+        })
+
+        new Vue({
+            el: "#app",
+            data: {
+                number: "0",
+                text: "hello"
+            },
+            methods: {
+                sendText(number,text) {
+                this.number = number
+                 this.text = text
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
